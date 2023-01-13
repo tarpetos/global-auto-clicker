@@ -3,12 +3,16 @@ import time
 import keyboard
 
 
-def time_beetwen_clicks() -> int:
-    error_message = 'Invalid input! Must be positive integer number.\n'
+def time_beetwen_clicks() -> float:
+    error_message = 'Invalid input! Must be positive float number.\n'
 
     while True:
         try:
-            duration = int(input('Enter time delay beetwen clicks: '))
+            user_input_str = input('Enter time delay beetwen clicks: ')
+            user_input = user_input_str.replace(',', '.')
+
+            duration = float(user_input)
+
             if duration <= 0:
                 print(error_message)
                 continue
