@@ -1,13 +1,13 @@
-# Auto Clicker 
-A simple console clicker that allows you to make a global click in your operating system 1 time in a certain period of time.  
-This time period is set when the application is launched and persists until the application is stopped.  
-Also there is a function that allows you to hold one button (except `CTRL`). You have to enter the value of this button like a string.  
-If you enter more than 1 key value (or `CTRL`), the key hold will not work.
+# GUI Auto Clicker 
+Rewritten multithreaded version of CLI auto-clicker with graphical interface created with tkinter. 
+There is no possibility to hold buttons unlike the CLI interface. But now auto-clicking process
+is attached to mouse movement and can be configured much more in GUI version. 
+Also, this version of clicker allows to click with very high speed.
 
-To stop the clicker, you need to press the `CTRL` key until the program returns to the main menu.  
-To fully stop the program, you need to enter the `3` key in the main menu and press `Enter` or close your console.
 
 ## PyInstaller
+Creating executable with `PyInstaller`:
+
 ```shell
-pyinstaller -F -w --name "CLI Auto Clicker v0.1" --icon "app_icon/mouse-click-icon.ico" main.py
+pyinstaller -F -w --name "GUI Auto Clicker v0.1" --icon "app_icon/mouse-click-icon.ico" main.py
 ```
