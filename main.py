@@ -7,25 +7,22 @@ from pynput import keyboard
 
 def os_console_clear():
     user_os = platform.uname().system
-
-    if user_os == 'Linux' or user_os == 'MacOS':
-        os.system('clear')
-    elif user_os == 'Windows':
-        os.system('clr')
+    os_options = {"Linux": "clear", "Windows": "clr"}
+    os.system(os_options.get(user_os, "clear"))
 
 
 def invalid_autoclicker_input():
     os_console_clear()
-    print('Invalid input! Must be positive float or integer number.\n')
-    input('Press Enter to continue...\n')
+    print("Invalid input! Must be positive float or integer number.\n")
+    input("Press Enter to continue...\n")
     os_console_clear()
 
 
 def time_between_clicks() -> float:
     while True:
         try:
-            user_input_str = input('Enter time delay between clicks: ')
-            user_input = user_input_str.replace(',', '.')
+            user_input_str = input("Enter time delay between clicks: ")
+            user_input = user_input_str.replace(",", ".")
 
             duration = float(user_input)
 
@@ -40,7 +37,7 @@ def time_between_clicks() -> float:
 
 
 def button_to_hold():
-    user_button = input('Enter the key value that will be held: ')
+    user_button = input("Enter the key value that will be held: ")
     return user_button
 
 
@@ -53,23 +50,27 @@ def execute_program(user_input):
         user_button = button_to_hold()
 
     print(
-        '\nApplication will start after 10 seconds. '
-        '\nOpen the window where you want to automate the clicking or holding process.'
+        "\nApplication will start after 10 seconds. "
+        "\nOpen the window where you want to automate the clicking or holding process."
     )
 
     for second in range(10):
         time.sleep(1)
         time_to_wait = 10 - second
-        print('Wait', time_to_wait, 's...')
+        print("Wait", time_to_wait, "s...")
 
     print(
-        '\nClicker is launched!!!' if user_input == 1 else '\nButton holder is launched!!!',
-        '\nTo stop the program, press the "Ctrl" key until it returns to the main menu.\n'
+        (
+            "\nClicker is launched!!!"
+            if user_input == 1
+            else "\nButton holder is launched!!!"
+        ),
+        '\nTo stop the program, press the "Ctrl" key until it returns to the main menu.\n',
     )
 
     def on_press(key):
         if key == keyboard.Key.ctrl:
-            print('=' * 10, 'Return to main menu...', '=' * 10, '\n')
+            print("=" * 10, "Return to main menu...", "=" * 10, "\n")
             os_console_clear()
             listener.stop()
 
@@ -86,10 +87,10 @@ def execute_program(user_input):
 
 
 def menu():
-    print('1. Autoclicker')
-    print('2. Button holder')
-    print('3. Exit')
-    print('Choose an option: ', sep='', end='')
+    print("1. Autoclicker")
+    print("2. Button holder")
+    print("3. Exit")
+    print(">>>> ", sep="", end="")
 
 
 def process_user_choice():
@@ -113,10 +114,10 @@ def process_user_choice():
 
 def invalid_input():
     os_console_clear()
-    print('Invalid input! Possible options: 1, 2, 3. Try again.\n')
-    input('Press Enter to continue...\n')
+    print("Invalid input! Possible options: 1, 2, 3. Try again.\n")
+    input("Press Enter to continue...\n")
     os_console_clear()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     process_user_choice()

@@ -1,3 +1,4 @@
 PyAutoGUI~=0.9.53
 pynput~=1.7.6
-pyinstaller~=5.7.0
+pyinstaller~=6.5.0
+black~=24.3.0
